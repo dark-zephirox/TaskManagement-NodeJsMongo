@@ -1,0 +1,39 @@
+{{#if tasks}}
+    <table class="table table-bordered table-hover table-dark">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Operations</th>
+        </tr>
+      </thead>
+      {{#each tasks}}
+        <tbody>
+            <tr>
+              <td>{{@index}}</td>
+              <td>{{title}}</td>
+              <td>{{description}}</td>
+              <td>
+
+                {{#if done}}
+                  <a href="/task/{{_id}}/toggleDone" class="btn btn-secondary">Undone</a>
+                {{else}}
+                  <a href="/task/{{_id}}/toggleDone" class="btn btn-success">Done</a>
+                {{/if}}
+                
+                <a href="/task/{{_id}}/edit" class="btn btn-warning">Update</a>
+                <a href="/task/{{_id}}/delete" class="btn btn-danger">Delete</a>
+              </td>
+            </tr>
+        </tbody>
+      {{/each}}
+    </table>
+{{else}}
+  <div class="h-100 d-flex align-items-center justify-content-center">
+    <div class="text-center text-white">
+    <h1>No Task</h1>
+    <img src="https://cdn-icons-png.flaticon.com/512/2666/2666505.png" alt="" class="img-empty">
+  </div>
+  </div>
+{{/if}}
